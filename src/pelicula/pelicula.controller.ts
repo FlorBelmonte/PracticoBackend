@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param,  ParseUUIDPipe,  NotFoundException } from '@nestjs/common';
 import { Pelicula } from 'src/class/pelicula';
 import { CreatePeliculaDto } from 'src/dto/create-peliculas.dto';
 import { PeliculaService } from './pelicula.service';
@@ -7,20 +7,20 @@ import { PeliculaService } from './pelicula.service';
 export class PeliculasController {
     constructor (private readonly peliculaService : PeliculaService){}
 
-@Get('peliculas')
+@Get()
     getAllPeliculas(): Pelicula[] {
       return this.peliculaService.getAllPeliculas();
     }
     
-  @Get(':id')
-  getPeliculaById(@Param('id') id: number): Pelicula {
-    const pelicula = this.peliculaService.getPeliculaById(id)
+
+@Get(':id')
+getPeliculaById(@Param("id", ParseUUIDPipe)id: string,): Pelicula {
+  const pelicula = this.peliculaService.getPeliculaById(id)
     if (!pelicula) {
       throw new NotFoundException('pelicula no encontrada');
     }
     return pelicula;
   }
-
 
   @Post()
   postPelicula(@Body() CreatePeliculaDto: CreatePeliculaDto) {
@@ -28,13 +28,13 @@ export class PeliculasController {
   }
 
 @Put(':id')
-public updatePelicula(@Body() pelicula: Pelicula, @Param('id') id: number){
+public updatePelicula(@Body() pelicula: Pelicula, @Param('id') id: string){
     return this.peliculaService.updatePelicula(pelicula, id)
 }
 
 
 @Delete(':id')
-    deletePelicula(@Param('id') id: number): boolean{
+    deletePelicula(@Param('id') id: string): boolean{
         return this.peliculaService.deletePelicula(id)
     }
 }

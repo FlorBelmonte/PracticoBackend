@@ -1,27 +1,20 @@
-import { IsNumber, IsString, IsArray, IsNotEmpty } from 'class-validator';
+import { IsNumber, IsString} from 'class-validator';
 
 export class CreatePeliculaDto {
-  @IsNumber()
-  id: number;
 
   @IsString()
-  @IsNotEmpty()
   titulo: string;
 
-  @IsArray()
-  @IsNotEmpty()
+  @IsString()
   actoresPrincipales: string[];
 
-  @IsArray()
-  @IsNotEmpty()
+  @IsString()
   generos: string[];
 
   @IsString()
-  @IsNotEmpty()
   sinopsis: string;
 
   @IsString()
-  @IsNotEmpty()
   imagen: string;
 
   @IsNumber()
