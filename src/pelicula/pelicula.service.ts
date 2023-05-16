@@ -69,22 +69,22 @@ export class PeliculaService {
       return newPelicula;
   }
 
-updatePelicula(nuevaPelicula: any, id: string): string{
-  let index = this.peliculas.findIndex(pelicula => pelicula.id == id);
-  if (index != -1){
-    let peliculaExistente = this.peliculas[index];
-    peliculaExistente.setTitulo(nuevaPelicula.titulo);
-    peliculaExistente.setActoresPrincipales(nuevaPelicula.actoresPrincipales);
-    peliculaExistente.setGeneros(nuevaPelicula.generos);
-    peliculaExistente.setSinopsis(nuevaPelicula.sinopsis);
-    peliculaExistente.setImagen(nuevaPelicula.imagen);
-    peliculaExistente.setDuracion(nuevaPelicula.duracion);
-    peliculaExistente.setFechaLanzamiento(nuevaPelicula.fechaLanzamiento);
-
-    return "ok"
-  } else {
-    return "404"
-  }
+  updatePelicula(nuevaPelicula: any, id: string): string {
+    let index = this.peliculas.findIndex(pelicula => pelicula.id == id);
+    if (index !== -1) {
+      let peliculaExistente = this.peliculas[index];
+      peliculaExistente.titulo = nuevaPelicula.titulo;
+      peliculaExistente.actoresPrincipales = nuevaPelicula.actoresPrincipales;
+      peliculaExistente.generos = nuevaPelicula.generos;
+      peliculaExistente.sinopsis = nuevaPelicula.sinopsis;
+      peliculaExistente.imagen = nuevaPelicula.imagen;
+      peliculaExistente.duracion = nuevaPelicula.duracion;
+      peliculaExistente.fechaLanzamiento = nuevaPelicula.fechaLanzamiento;
+  
+      return "ok";
+    } else {
+      return "404";
+    }
 }
 
 

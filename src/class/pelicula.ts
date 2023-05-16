@@ -31,32 +31,6 @@ export class Pelicula {
     toString(): string {
       return `${this.id},${this.titulo},${this.actoresPrincipales},${this.generos},${this.sinopsis}, ${this.imagen}, ${this.duracion}, ${this.fechaLanzamiento}`;
     }
-    setTitulo(titulo: string): void {
-      this.titulo = titulo;
-    }
-  
-    setActoresPrincipales(actoresPrincipales: string[]): void {
-      this.actoresPrincipales = actoresPrincipales;
-    }
-  
-    setGeneros(generos: string[]): void {
-      this.generos = generos;
-    }
-  
-    setSinopsis(sinopsis: string): void {
-      this.sinopsis = sinopsis;
-    }
-  
-    setImagen(imagen: string): void {
-      this.imagen = imagen;
-    }
-  
-    setDuracion(duracion: number): void {
-      this.duracion = duracion;
-    }
-  
-    setFechaLanzamiento(fechaLanzamiento: number): void {
-      this.fechaLanzamiento = fechaLanzamiento;
-    }
+
   }
   
