@@ -68,7 +68,6 @@ export class PeliculaService {
   getPeliculaById(id: string): Pelicula {
     const pelicula = this.peliculas.find((pelicula) => pelicula.id === id);
     if (!pelicula) {
-      // devolver una exception
       throw new NotFoundException();
     }
 
